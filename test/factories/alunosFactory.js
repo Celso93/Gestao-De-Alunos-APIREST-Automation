@@ -5,8 +5,8 @@ export function novoAluno() {
 
     return {
         nome: faker.person.fullName(),
-        email: `${faker.internet.username().toLowerCase()}.${timestamp}@example.com`,
+        email: `${faker.internet.username().toLowerCase()}${timestamp}@example.com`,
         matricula: `${timestamp}`,
-        senha: faker.string.alpha(6),
+        senha: 'senha1234',
     };
 }
