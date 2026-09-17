@@ -10,7 +10,8 @@ on:
       - main
 
 jobs:
-  Build do projeto e execução dos testes internos de API:
+  build-e-testes-internos:
+    name: Build do projeto e execução dos testes internos de API
     runs-on: ubuntu-latest
 
     env:
