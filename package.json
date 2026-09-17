@@ -26,6 +26,7 @@
   "devDependencies": {
     "@faker-js/faker": "^10.6.0",
     "chai": "^6.2.2",
+    "chai-json-schema": "^2.0.1",
     "dotenv": "^17.4.2",
     "mocha": "^11.8.0",
     "mochawesome": "^8.0.1",

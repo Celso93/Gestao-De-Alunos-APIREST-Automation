@@ -15,3 +15,14 @@ export async function enrollStudent(disciplinaId, alunoId, authorization, app) {
         .set('Authorization', `${authorization}`)
         .send({ alunoId })
 }
+
+export async function studentSendActivity(alunoId, studentAuthorization, disciplinaId, app) {
+    return await api(app)
+      .post(`/api/alunos/${alunoId}/trabalhos`)
+      .set('Authorization', `Bearer ${studentAuthorization}`)
+      .send({
+            disciplinaId: disciplinaId,
+            titulo: "Atividade final do modulo de automação de testes",
+            descricao: "Registro do aluno"
+        });
+}

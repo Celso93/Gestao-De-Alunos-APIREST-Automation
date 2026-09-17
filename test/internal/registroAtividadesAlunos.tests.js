@@ -15,10 +15,12 @@ describe('Registro de Atividades dos Alunos', () => {
     authorization = await comTokenDoAdmin(app);
   });
 
-  it.only('logar como administrador, cadastrar um aluno, logar como aluno e registrar a entrega de um trabalho como aluno', async () => {
+  it('logar como administrador, cadastrar um aluno, logar como aluno e registrar a entrega de um trabalho como aluno', async () => {
     // Arrange
     const aluno = novoAluno();
     const alunoResponse = await createStudent(aluno, authorization, app);
+    console.log('email:', aluno.email);
+    console.log('email:', aluno.senha);
     const alunoTokenResponse = await loginUser(aluno.email, aluno.senha);
     // Act
     const registroAtividadeResponse = await api(app)
