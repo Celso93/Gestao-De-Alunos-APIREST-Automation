@@ -4,39 +4,9 @@ import { comTokenDoAdmin, loginUser } from '../helpers/auth.js';
 import { createStudent } from '../helpers/alunos.js';
 import { novoAluno } from '../factories/alunosFactory.js';
 import { enrollStudent, studentSendActivity } from '../helpers/disciplinas.js';
+import { registroAtividadeSchema } from '../schema/registroAtividades.schema.js';
 
 use(chaiJsonSchema);
-
-const registroAtividadeSchema = {
-  title: 'Registro de Atividade Schema',
-  type: 'object',
-  required: [
-    'id',
-    'alunoId',
-    'disciplinaId',
-    'titulo',
-    'descricao',
-    'status',
-    'nota',
-    'feedback',
-    'dataEntrega',
-    'createdAt',
-    'updatedAt',
-  ],
-  properties: {
-    id: { type: 'string' },
-    alunoId: { type: 'string' },
-    disciplinaId: { type: 'string' },
-    titulo: { type: 'string' },
-    descricao: { type: 'string' },
-    status: { type: 'string' },
-    nota: { type: ['number', 'null'] },
-    feedback: { type: ['string', 'null'] },
-    dataEntrega: { type: 'string' },
-    createdAt: { type: 'string' },
-    updatedAt: { type: 'string' },
-  },
-};
 
 describe('Registro de Atividades dos Alunos', () => {
 
@@ -56,6 +26,5 @@ describe('Registro de Atividades dos Alunos', () => {
     const registroAtividadeResponse = await studentSendActivity(alunoResponse.body.id, alunoTokenResponse.body.token, disciplina);
     expect(registroAtividadeResponse.status).to.equal(201);
     expect(registroAtividadeResponse.body).to.be.jsonSchema(registroAtividadeSchema);
-
   })
 })
